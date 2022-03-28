@@ -21,9 +21,15 @@ while not game_end:
     window.update()
     time.sleep(1)  # suspend execution of a calling thread for the requested number of seconds
     # time.sleep() is vital for this program
-    for segment in snakes:
-        segment.forward(20)
-        print(segment.xcor())
-        print(f"Heading is {segment.heading()}")
-    # snakes[1].right(90)
+
+    for segment in range(len(snakes)-1, 0, -1):
+        # here n(last item) will move to (n-1) segment's coordinates, (n-1) will move to (n-2) segment's
+        # coordinates and so on (n-2)..(n-3)....2..1(first segment of the  snake which is HEAD of snake)
+        x_cor_new = snakes[segment-1].xcor()
+        y_cor_new = snakes[segment-1].ycor()
+        snakes[segment].goto(x_cor_new, y_cor_new)
+    snakes[0].backward(20)
+    snakes[0].right(90)
+
+
 window.exitonclick()
