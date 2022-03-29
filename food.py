@@ -12,6 +12,7 @@ class Food(Turtle):
         self.refresh_food()
 
     def refresh_food(self):
+        """It makes the food appear randomly on the screen."""
         coor_x = random.randrange(-280, 280)
         coor_y = random.randrange(-280, 280)
         self.goto(coor_x, coor_y)

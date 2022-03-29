@@ -27,5 +27,9 @@ while not game_end:
     if snake.head.distance(food) < 15:
         scoreboard.ink_the_board()
         food.refresh_food()
+    if snake.head.xcor() > 300 or snake.head.xcor() < -300 or snake.head.ycor() > 285 or snake.head.ycor() < -300:
+        game_end = True
+        scoreboard.game_over()
+
 
 window.exitonclick()
