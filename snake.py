@@ -1,10 +1,11 @@
 from turtle import Turtle
-import turtle
 MOVE_DISTANCE = 20
 UP = 90
 DOWN = 270
 RIGHT = 0
 LEFT = 180
+STARTING_POSITION = ((0, 0), (-20, 0), (-40, 0))
+
 
 class Snake:
     def __init__(self):
@@ -13,16 +14,26 @@ class Snake:
         self.head = self.snakes_list[0]
 
     def create_snake(self):
-        x_cor = 0
-        for i in range(3):
-            new_segment = Turtle(shape='square')
-            new_segment.color('white')
-            new_segment.penup()
-            new_segment.goto(x=x_cor, y=0)
-            x_cor -= 20
-            self.snakes_list.append(new_segment)
+        """It creates the snake at the initial state of the program"""
+        for position in STARTING_POSITION:
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        """Adds individual segment to the snake list"""
+        new_segment = Turtle(shape='square')
+        new_segment.color('white')
+        new_segment.penup()
+        new_segment.goto(position)
+        self.snakes_list.append(new_segment)
+
+    def extend_segment(self):
+        """It increases the size of the snake by one square"""
+        self.add_segment(self.snakes_list[-1].pos())
 
     def move(self):
+        """move() method changes the coordinates. Head moves by 20 paces in direction of setheading()
+        other squares go to preceding square's position
+        """
         for segment in range(len(self.snakes_list) - 1, 0, -1):
             # here n(last item) will move to (n-1) segment's coordinates, (n-1) will move to (n-2) segment's
             # coordinates and so on (n-2)..(n-3)....2..1(first segment of the  snake which is HEAD of snake)
@@ -46,4 +57,5 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
 
