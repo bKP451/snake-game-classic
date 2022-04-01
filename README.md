@@ -1,15 +1,15 @@
 This is a simple snake game developed using Turtle graphics module. 
 Here are four files. Three are class modules.
 Classes are :
- i. snake.py
- ii. scoreboard.py
- iii. food.py
+ 1. snake.py
+ 2. scoreboard.py
+ 3. food.py
  
  
  If you want to run the program, then clone the repository and run snake_game.py.
  
  Go to the terminal and type:
- python3 snake_game.py
+ `python3 snake_game.py`
  
 
 
